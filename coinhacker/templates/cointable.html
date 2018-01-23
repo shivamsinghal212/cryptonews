@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="list-group">
+      {% for news in coin_news %}
+    <a href="{{news.url}}" class="list-group-item">
+      <h4 class="list-group-item-heading">{{news.title}}</h4>
+      <p class="list-group-item-text">{{news.description}}</p>
+    </a>
+    {% endfor %}
+    </div>
+  </div>
+  <div class="col-6">
+<table class="table table-sm">
+<thead>
+  <tr class="table-info">
+    <th scope="col">Name</th>
+    <th scope="col">Symbol</th>
+    <th scope="col">Price(USD)</th>
+    <th scope="col">% change(1h)</th>
+    <th scope="col">% change(24h)</th>
+  </tr>
+</thead>
+<tbody>
+  {% for coin in coin_data %}
+  <tr class="table-{% if coin.percent_change_1h.0 == '-'%}danger{% else %}success{% endif %}">
+    <th scope="row">{{coin.name}}</th>
+    <td>{{coin.symbol}}</td>
+    <td>{{coin.price_usd}}</td>
+    <td>{{coin.percent_change_1h}}</td>
+    <td>{{coin.percent_change_24h}}</td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endblock content %}
