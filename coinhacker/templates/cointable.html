@@ -1,6 +1,18 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<h3>top 6 gainers</h3>
+<ol>
+{% for coin in top_5 %}
+<li>{{coin.0}}||{{coin.1}}%</li>
+{% endfor %}
+</ol>
+<h3>top 6 losers</h3>
+<ol>
+{% for coin in bottom_5%}
+<li>{{coin.0}}||{{coin.1}}%</li>
+{% endfor %}
+</ol>
 <div class="row justify-content-center">
   <div class="col-6">
     <div class="list-group">
