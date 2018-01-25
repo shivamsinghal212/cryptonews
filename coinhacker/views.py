@@ -11,9 +11,15 @@ def index(request):
     data["bottom_5"] = get_bottom_5()
     return render(request,"cointable.html", data)
 
+def ico(request):
+    data = {}
+    data["live_ico"] = get_live_ico()
+    return render(request,"icotable.html",data)
 
-
-
+def upcoming_ico(request):
+    data = {}
+    data["upcoming_ico"] = get_upcoming_ico()
+    return render(request,"upcoming_ico.html",data)
 
 def get_data():
     api_url = "https://api.coinmarketcap.com/v1/ticker/?limit=40"
@@ -23,7 +29,6 @@ def get_data():
     except Exception as e:
         print(e)
         data = dict()
-
     return data
 
 
@@ -67,3 +72,25 @@ def get_bottom_5():
     bottom_5 = []
     bottom_5 = get_price_all()[-6:]
     return bottom_5
+
+def get_live_ico():
+    data ={}
+    api_url = "https://api.icowatchlist.com/public/v1/live"
+    try:
+        data = requests.get(api_url).json()
+        for value in data.values():
+            for v in value.values():
+                return v
+    except Exception as e:
+        print(e)
+
+def get_upcoming_ico():
+        data ={}
+        api_url = "https://api.icowatchlist.com/public/v1/upcoming"
+        try:
+            data = requests.get(api_url).json()
+            for value in data.values():
+                for v in value.values():
+                    return v
+        except Exception as e:
+            print(e)
