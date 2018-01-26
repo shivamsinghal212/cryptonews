@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<form action="/convert/" method="GET">
+
+  <input type="text" name="fr" />
+  <input type="text" name="to" />
+
+  <input type="submit" value="Convert" id="convertbotton" />
+</form >
+
+Price:
+{% for item in data%}
+{{item.price}}
+{% endfor %}
+
+
+{% endblock content %}
