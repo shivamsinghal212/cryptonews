@@ -4,18 +4,72 @@
 <br>
 <br>
 <br>
+<div class="form-row text-center">
+    <div class="col">
+      <br>
+<h1 class="display-4">Cryptocurrency converter</h1><br><br>
+</div>
+</div>
+<div class="jumbotron">
+
 <form action="/convert/" method="GET">
 
-  <input type="text" name="fr" />
-  <input type="text" name="to" />
+<div class="form-group">
+  <div class="row justify-content-around">
+    <div class="col-4">
+  <label for="From">From:</label>
+  <select class="form-control" id="From" name="fr">
+    <option value="BTC">BTC</option>
+        <option value="XRP">XRP</option>
+        <option value="LTC">LTC</option>
+        <option value="ETH">ETH</option>
+        <option value="XLM">XLM</option>
+        <option value="TRX">TRX</option>
+      </select>
+</div>
+<div class="col-4">
+      <label for="To">To:</label>
+      <select class="form-control" id="to" name="to">
+        <option value="XRP">XRP</option>
+            <option value="BTC">BTC</option>
+            <option value="LTC">LTC</option>
+            <option value="ETH">ETH</option>
+            <option value="TRX">TRX</option>
+            <option value="XLM">XLM</option>
+          </select>
+</div>
+</div>
+<div class="form-row text-center">
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary btn-lg ">Convert</button>
+    </div>
+  </div>
 
-  <input type="submit" value="Convert" id="convertbotton" />
+</div>
 </form >
 
-Price:
-{% for item in data%}
-{{item.price}}
-{% endfor %}
-
+<div class="row justify-content-center">
+  <div class="col-8">
+<table class="table">
+<thead>
+  <tr class="table-info">
+    <th scope="col">From</th>
+    <th scope="col">Target</th>
+    <th scope="col">Price</th>
+    <th scope="col">%change</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+  <td>{{data.base}}</td>
+  <td>{{data.target}}</td>
+  <td>{{data.price}}</td>
+  <td>{{data.change}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 {% endblock content %}

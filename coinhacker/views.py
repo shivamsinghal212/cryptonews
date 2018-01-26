@@ -101,15 +101,13 @@ def get_upcoming_ico():
 @csrf_exempt
 def get_rates(request):
     if request.method=='GET':
-
         fr = str(request.GET.get('fr'))
         to = str(request.GET.get('to'))
         api_url = "https://api.cryptonator.com/api/full/"+fr+"-"+to
         data = requests.get(api_url).json()
-        #for items in data.values():
-        context = {'data':data.values()}
-        template = loader.get_template('convert.html')
-        return HttpResponse(template.render(context, request))
+        context={'data':list(data.values())[0]}
+        #template = loader.get_template('convert.html')
+        return render(request,"convert.html",context)
     else:
                 #if post request is not true
                 #returing the form template
