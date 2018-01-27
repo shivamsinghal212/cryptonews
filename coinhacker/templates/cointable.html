@@ -5,9 +5,14 @@
 <br>
 <br>
 <br>
-<div class="row">
-  <div class="col-6 col-md-4">
-    <h3>top 6 gainers</h3>
+<div class="row  ">
+<div class="col-7">
+<div class="jumbotron">
+<div class="row ">
+<div class="card-deck justify-content-center">
+  {% for news in coin_news %}
+  <div class="col-xs-4 ">
+    <!-- <h3>top 6 gainers</h3>
   <ol>
   {% for coin in top_5 %}
   <li>{{coin.0}}||{{coin.1}}%</li>
@@ -18,9 +23,29 @@
   {% for coin in bottom_5%}
   <li>{{coin.0}}||{{coin.1}}%</li>
   {% endfor %}
-  </ol>
+  </ol> -->
+
+  <div class="card text-white bg-dark" style="width:300px">
+    <img class="card-img-top" src="{{news.urlToImage}}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h6 class="card-title">{{news.title}}</h6>
+    </div>
+  </div>
+  <br>
+
 </div>
-  <div class="col-6 col-md-4">
+
+{% endfor %}
+</div>
+
+</div>
+</div>
+</div>
+
+   <div class="col-5">
+     <div class="jumbotron">
+
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -38,7 +63,7 @@
       <img class="d-block w-100" src={{news.urlToImage}} alt="First slide"></a>
       <div class="carousel-caption d-none d-md-block">
         <h5>{{news.title}}</h5>
-        <!--<p>{{news.description}}</p>-->
+
       </div>
     </div>
       {% endfor %}
@@ -53,10 +78,17 @@
   </a>
 </div>
 </div>
+<div class="jumbotron">
+<div class="row justify-content-center">
+
+<a class="twitter-timeline"  href="https://twitter.com/hashtag/cryptocurrency" data-widget-id="957238826346283009">#cryptocurrency Tweets</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 </div>
-
-<div class="col-6 col-md-4">.col-6 .col-md-4</div>
-
+</div>
+</div>
+</div>
+</div>
 
 
 <div class="row justify-content-center">
