@@ -58,6 +58,27 @@
         {% endblock content %}
 
   </div>
+<script>
+function sendText(){
+var exampleSocket = new WebSocket("wss://ws.coinapi.io/v1/");
+var msg = {
+  "type": "hello",
+  "apikey": "3DB1CE61-AB4D-42C9-A68B-09021B53C419",
+  "heartbeat": "true",
+  "subscribe_data_type": ["trade"]
+}
+exampleSocket.onopen = function (event) {
+  exampleSocket.send(JSON.stringify(msg))
+}
+exampleSocket.onmessage = function (event) {
+  console.log(event.data);
+}
+}
+function closeCon(){
+var exampleSocket = new WebSocket("wss://ws.coinapi.io/v1/");
+  exampleSocket.close();
+}
+</script>
 
 </body>
 </html>
