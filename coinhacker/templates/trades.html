@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<script src="{% static 'js/get_live_trades.js' %}"></script>
+    <div class="container">
+<br>
+<br>
+<br>
+<div id="status">Connecting...</div>
+<button type="button" onclick="sendText()">Start streaming</button>
+<button type="button" id="close">Close Connection</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Exchange</th>
+      <th>Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Price</th>
+      <th>Size</th>
+      <th>BUY/SELL</th>
+
+    </tr>
+  </thead>
+  <tbody id="trades">
+  </tbody>
+</table>
+    </div>
+
+{% endblock %}

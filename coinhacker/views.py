@@ -113,3 +113,7 @@ def get_rates(request):
                 #returing the form template
         template = loader.get_template('convert.html')
         return HttpResponse(template.render())
+
+
+def get_live_trades(request):
+    return render(request, 'trades.html', context=None)
