@@ -117,3 +117,17 @@ def get_rates(request):
 
 def get_live_trades(request):
     return render(request, 'trades.html', context=None)
+
+
+def get_news_search(request):
+    search = {}
+    if request.method=='GET':
+        q = str(request.GET.get('query'))
+        sources = "bbc-news,daily-mail,cnn,financial-times,the-economist,the-times-of-india,the-new-york-times,business-insider"
+        sort_by = "popularity"
+        api_url = "https://newsapi.org/v2/everything?q=" + "+" + q + "&sources="+sources+"&language=en&apiKey=99fd007d1e724a5791ae6a018caecbc6"
+
+        data = requests.get(api_url).json()
+        search = data['articles']
+        context = {'search_news': search,'query':q}
+        return render(request, 'search.html', context)
